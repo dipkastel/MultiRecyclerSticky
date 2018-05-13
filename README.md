@@ -1,6 +1,8 @@
 # StickyRecycler
 
 
+![Image of StickyRecycler](https://github.com/dipkastel/StickyRecycler/blob/master/ScreenShots/20180513_120456.gif?raw=true)
+
 ###  recycler
 ###  Multiple item type
 ###  sticky Header
