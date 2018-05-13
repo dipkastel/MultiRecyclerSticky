@@ -5,6 +5,11 @@
 ###  Multiple item type
 ###  sticky Header
 
+installation
+
+------
+
+======
 
 1->create List of MultiItem :
 
@@ -42,5 +47,15 @@
         recyclerView.setAdapter(multiRecyclerAdapter);
         
         
-=====
+======
+
+for sticky header item
+
+        implements StickyHeader,MultiAdapterItem 
+        
+other list items 
+        
+        implements MultiAdapterItem 
+
+======
 
