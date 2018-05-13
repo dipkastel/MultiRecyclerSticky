@@ -1,20 +1,9 @@
 # StickyRecycler
 
 
-Alt-H1
-======
-
-Alt-H2
-------
-
-
+###  recycler
 </br>
-#-recycler
+###  Multiple item type
 </br>
--Multiple item type
-</br>
-#sticky Header
-
-
-
+###  sticky Header
 </br>
