@@ -47,7 +47,7 @@ installation
         recyclerView.setAdapter(multiRecyclerAdapter);
         
         
-======
+------
 
 for sticky header item
 
@@ -57,5 +57,5 @@ other list items
         
         implements MultiAdapterItem 
 
-======
+------
 
