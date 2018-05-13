@@ -23,6 +23,7 @@ Step 2. Add the dependency
 
 	dependencies {
 	        implementation 'com.github.dipkastel:StickyRecycler:1.0.1'
+    		implementation "com.android.support:recyclerview-v7:27.1.1"
 	}
         
 ------
