@@ -19,7 +19,7 @@ import bloom.com.stickyrecycler.MultiItem;
 import bloom.com.stickyrecycler.MultiRecyclerAdapter;
 import bloom.com.stickyrecycler.StickyHeaderListener;
 import bloom.com.stickyrecycler.StickyLayoutManager;
-import bloom.com.stickyrecycler.TopSnappedStickyLayoutManager;
+import bloom.com.stickyrecycler.StickyListLayoutManager;
 
 public class MainActivity extends AppCompatActivity implements SampleListItem.ItemClickListener ,SampleListItem2.ItemClickListener ,HeaderItem.ItemClickListener{
 
@@ -29,10 +29,14 @@ public class MainActivity extends AppCompatActivity implements SampleListItem.It
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        // create List of items
         String[] List = {"Apple","Apricot","Banana","Bilberry","Blackberry","Blackcurrant","Blueberry","Coconut","Currant","Cherry","Cherimoya","Clementine","Cloudberry ","Date","Damson","Durian","Elderberry","Fig","Feijoa","Gooseberry","Grape","Grapefruit","Huckleberry","Jackfruit","Jambul","Jujube","Kiwifruit","Kumquat","Lemon","Lime","Loquat","Lychee","Mango","Melon","Cantaloupe","Honeydew","Watermelon","Rock melon","Nectarine","Orange","Passionfruit","Peach","Pear","Plum","Plumcot","Prune","Pineapple","Pomegranate","Pomelo","Purple mangosteen","Raisin","Raspberry","Rambutan","Redcurrant","Satsuma","Strawberry","Tangerine","Tomato","Ugli Fruit"};
         List<item> items = new ArrayList<>();
         for(int i=0;i< List.length;i++){
             if(i%7==0){
+                //set header
                 item item = new item(true,2,List[i]);
                 items.add(item);
             }
@@ -40,6 +44,8 @@ public class MainActivity extends AppCompatActivity implements SampleListItem.It
             items.add(item);
 
         }
+
+
         List<MultiItem> multiItems = new ArrayList<>();
         MultiItem multiItem = new MultiItem();
         multiItem.setViewType(0);
@@ -59,7 +65,6 @@ public class MainActivity extends AppCompatActivity implements SampleListItem.It
         multiItem3.setHolderView(R.layout.item_header);
         multiItems.add(multiItem3);
 
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
 
 
         //fill Adapter
@@ -87,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements SampleListItem.It
 
 
 
-        StickyLayoutManager layoutManager = new TopSnappedStickyLayoutManager(MainActivity.this, homeItems);
+        StickyLayoutManager layoutManager = new StickyListLayoutManager(MainActivity.this, homeItems);
         //    layoutManager.elevateHeaders(true); // Default elevation of 5dp
         // You can also specify a specific dp for elevation
         layoutManager.elevateHeaders(-1);
@@ -95,12 +100,10 @@ public class MainActivity extends AppCompatActivity implements SampleListItem.It
         layoutManager.setStickyHeaderListener(new StickyHeaderListener() {
             @Override
             public void headerAttached(View headerView, int adapterPosition) {
-                Log.d("Listener", "Attached with position: " + adapterPosition);
             }
 
             @Override
             public void headerDetached(View headerView, int adapterPosition) {
-                Log.d("Listener", "Detached with position: " + adapterPosition);
             }
         });
 

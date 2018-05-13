@@ -6,9 +6,9 @@ import java.util.List;
 
 import bloom.com.stickyrecycler.MultiAdapterItem;
 
-public final class TopSnappedStickyLayoutManager extends StickyLayoutManager {
+public final class StickyListLayoutManager extends StickyLayoutManager {
 
-    public TopSnappedStickyLayoutManager(Context context, List<MultiAdapterItem> headerHandler) {
+    public StickyListLayoutManager(Context context, List<MultiAdapterItem> headerHandler) {
         super(context, headerHandler);
     }
 
