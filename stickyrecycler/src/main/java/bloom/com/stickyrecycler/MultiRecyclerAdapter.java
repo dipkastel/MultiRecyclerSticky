@@ -2,6 +2,7 @@ package bloom.com.stickyrecycler;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,11 +32,14 @@ public class MultiRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view;
+        View view = null;
         for (MultiItem item : stikyItems){
             if(viewType==item.getViewType()){
-
-                view = layoutInflater.inflate(item.getHolderView(), parent, false);
+                try {
+                    view = layoutInflater.inflate(item.getHolderView(), parent, false);
+                }catch (Exception e){
+                    Log.e("MultiRecyclerAdapter : ","can not inflate view");
+                }
                 try {
                     Class cl = null;
                     cl = Class.forName(item.getHolderPackage());
@@ -43,6 +47,7 @@ public class MultiRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.View
                     Object Holder = con.newInstance(view);
                     return (RecyclerView.ViewHolder) Holder;
                 } catch (Exception e) {
+                    Log.e("MultiRecyclerAdapter : ","can not get class and create holder");
                     e.printStackTrace();
                 }
             }
@@ -57,7 +62,7 @@ public class MultiRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.View
             MultiAdapterItem homeItem = homeItems.get(position);
             homeItem.setup(holder);
         } catch (Exception e) {
-            //TODO check for why class cast exception raise
+            Log.e("MultiRecyclerAdapter : ","can not bind view");
         }
     }
 

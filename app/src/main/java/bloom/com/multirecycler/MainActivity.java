@@ -39,10 +39,10 @@ public class MainActivity extends AppCompatActivity implements SampleListItem.It
         for(int i=0;i< List.length;i++){
             if(i%7==0){
                 //set header
-                item item = new item(true,2,List[i]);
-                items.add(item);
+              //  item item = new item(true,2,List[i]);
+               // items.add(item);
             }
-            item item = new item(false,i%2,List[i]);
+            item item = new item(false,0,List[i]);
             items.add(item);
 
         }
