@@ -4,9 +4,8 @@ import android.content.Context;
 
 import java.util.List;
 
-import bloom.com.stickyrecycler.MultiAdapterItem;
 
-public final class StickyListLayoutManager extends StickyLayoutManager {
+public class StickyListLayoutManager extends StickyLayoutManager {
 
     public StickyListLayoutManager(Context context, List<MultiAdapterItem> headerHandler) {
         super(context, headerHandler);

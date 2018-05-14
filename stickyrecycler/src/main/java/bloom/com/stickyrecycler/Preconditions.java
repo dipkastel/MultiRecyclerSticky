@@ -4,7 +4,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.view.View;
 import android.widget.FrameLayout;
 
-final class Preconditions {
+public class Preconditions {
 
     private Preconditions() {
 

@@ -15,7 +15,7 @@ import android.view.ViewTreeObserver;
 import java.util.List;
 import java.util.Map;
 
-final class StickyHeaderPositioner {
+public class StickyHeaderPositioner {
 
     static final int NO_ELEVATION = -1;
     static final int DEFAULT_ELEVATION = 5;

@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements SampleListItem.It
         setContentView(R.layout.activity_main);
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
+
+
         // create List of items
         String[] List = {"Apple","Apricot","Banana","Bilberry","Blackberry","Blackcurrant","Blueberry","Coconut","Currant","Cherry","Cherimoya","Clementine","Cloudberry ","Date","Damson","Durian","Elderberry","Fig","Feijoa","Gooseberry","Grape","Grapefruit","Huckleberry","Jackfruit","Jambul","Jujube","Kiwifruit","Kumquat","Lemon","Lime","Loquat","Lychee","Mango","Melon","Cantaloupe","Honeydew","Watermelon","Rock melon","Nectarine","Orange","Passionfruit","Peach","Pear","Plum","Plumcot","Prune","Pineapple","Pomegranate","Pomelo","Purple mangosteen","Raisin","Raspberry","Rambutan","Redcurrant","Satsuma","Strawberry","Tangerine","Tomato","Ugli Fruit"};
         List<item> items = new ArrayList<>();
