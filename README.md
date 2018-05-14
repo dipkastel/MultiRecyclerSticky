@@ -1,6 +1,8 @@
 # StickyRecycler
 
 
+![Image of StickyRecycler](https://github.com/dipkastel/StickyRecycler/blob/master/ScreenShots/20180513_120456.gif?raw=true)
+
 ###  recycler
 ###  Multiple item type
 ###  sticky Header
@@ -21,6 +23,7 @@ Step 2. Add the dependency
 
 	dependencies {
 	        implementation 'com.github.dipkastel:StickyRecycler:1.0.1'
+    		implementation "com.android.support:recyclerview-v7:27.1.1"
 	}
         
 ------
