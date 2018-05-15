@@ -3,6 +3,7 @@ package bloom.com.multirecycler;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -38,32 +39,23 @@ public class MainActivity extends AppCompatActivity implements SampleListItem.It
         for(int i=0;i< List.length;i++){
             if(i%7==0){
                 //set header
-              //  item item = new item(true,2,List[i]);
-               // items.add(item);
+                item item = new item(true,2,List[i]);
+                items.add(item);
             }
-            item item = new item(false,0,List[i]);
+            item item = new item(false,i%2,List[i]);
             items.add(item);
 
         }
 
 
         List<MultiItem> multiItems = new ArrayList<>();
-        MultiItem multiItem = new MultiItem();
-        multiItem.setViewType(0);
-        multiItem.setHolderPackage("bloom.com.multirecycler.List.Holders.SampleItemViewHolder");
-        multiItem.setHolderView(R.layout.item_sample);
+        MultiItem multiItem = new MultiItem(0,R.layout.item_sample,"bloom.com.multirecycler.List.Holders.SampleItemViewHolder");
         multiItems.add(multiItem);
 
-        MultiItem multiItem2 = new MultiItem();
-        multiItem2.setViewType(1);
-        multiItem2.setHolderPackage("bloom.com.multirecycler.List.Holders.SampleItemViewHolder2");
-        multiItem2.setHolderView(R.layout.item_sample2);
+        MultiItem multiItem2 = new MultiItem(1,R.layout.item_sample2,"bloom.com.multirecycler.List.Holders.SampleItemViewHolder2");
         multiItems.add(multiItem2);
 
-        MultiItem multiItem3 = new MultiItem();
-        multiItem3.setViewType(2);
-        multiItem3.setHolderPackage("bloom.com.multirecycler.List.Holders.headerItemViewHolder");
-        multiItem3.setHolderView(R.layout.item_header);
+        MultiItem multiItem3 = new MultiItem(2,R.layout.item_header,"bloom.com.multirecycler.List.Holders.headerItemViewHolder");
         multiItems.add(multiItem3);
 
 
@@ -93,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements SampleListItem.It
 
 
 
-        StickyLinearLayoutManager layoutManager = new StickyListLinearLayoutManager(MainActivity.this, homeItems);
+        StickyLinearLayoutManager layoutManager = new StickyListLinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, homeItems);
         //    layoutManager.elevateHeaders(true); // Default elevation of 5dp
         // You can also specify a specific dp for elevation
         layoutManager.elevateHeaders(-1);
