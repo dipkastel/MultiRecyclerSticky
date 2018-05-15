@@ -103,8 +103,8 @@ public class StickyLinearLayoutManager extends LinearLayoutManager {
         int scroll = super.scrollHorizontallyBy(dx, recycler, state);
         if (Math.abs(scroll) > 0) {
             if (positioner != null) {
-                positioner.updateHeaderState(
-                        findFirstVisibleItemPosition(), getVisibleHeaders(), viewRetriever, findFirstCompletelyVisibleItemPosition() == 0);
+//                positioner.updateHeaderState(
+//                        findFirstVisibleItemPosition(), getVisibleHeaders(), viewRetriever, findFirstCompletelyVisibleItemPosition() == 0);
             }
         }
         return scroll;

@@ -184,7 +184,6 @@ public class StickyHeaderPositioner {
      * preceding header position (if available).
      */
     private int getHeaderPositionToShow(int firstVisiblePosition, @Nullable View headerForPosition) {
-        try {
             int headerPositionToShow = INVALID_POSITION;
             if (headerIsOffset(headerForPosition)) {
                 int offsetHeaderIndex = headerPositions.indexOf(firstVisiblePosition);
@@ -200,10 +199,6 @@ public class StickyHeaderPositioner {
                 }
             }
             return headerPositionToShow;
-        }catch (Exception e){
-            Log.e("MultiRecyclerAdapter : ","HeaderNotExist : "+e);
-            return 0;
-        }
     }
 
     private boolean headerIsOffset(View headerForPosition) {
