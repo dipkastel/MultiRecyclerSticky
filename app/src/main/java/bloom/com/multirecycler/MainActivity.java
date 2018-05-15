@@ -4,7 +4,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -18,8 +17,8 @@ import bloom.com.stickyrecycler.MultiAdapterItem;
 import bloom.com.stickyrecycler.MultiItem;
 import bloom.com.stickyrecycler.MultiRecyclerAdapter;
 import bloom.com.stickyrecycler.StickyHeaderListener;
-import bloom.com.stickyrecycler.StickyLayoutManager;
-import bloom.com.stickyrecycler.StickyListLayoutManager;
+import bloom.com.stickyrecycler.StickyLinearLayoutManager;
+import bloom.com.stickyrecycler.StickyListLinearLayoutManager;
 
 public class MainActivity extends AppCompatActivity implements SampleListItem.ItemClickListener ,SampleListItem2.ItemClickListener ,HeaderItem.ItemClickListener{
 
@@ -94,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements SampleListItem.It
 
 
 
-        StickyLayoutManager layoutManager = new StickyListLayoutManager(MainActivity.this, homeItems);
+        StickyLinearLayoutManager layoutManager = new StickyListLinearLayoutManager(MainActivity.this, homeItems);
         //    layoutManager.elevateHeaders(true); // Default elevation of 5dp
         // You can also specify a specific dp for elevation
         layoutManager.elevateHeaders(-1);

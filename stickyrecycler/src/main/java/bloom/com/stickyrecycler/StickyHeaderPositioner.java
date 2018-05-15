@@ -412,7 +412,7 @@ public class StickyHeaderPositioner {
     }
 
     /**
-     * Detaching while {@link StickyLayoutManager} is laying out children can cause an inconsistent
+     * Detaching while {@link StickyLinearLayoutManager} is laying out children can cause an inconsistent
      * state in the child count variable in {@link android.widget.FrameLayout} layoutChildren method
      */
     private void safeDetachHeader() {

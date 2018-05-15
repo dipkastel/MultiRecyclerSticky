@@ -5,6 +5,12 @@ public class MultiItem {
     int HolderView;
     String HolderPackage;
 
+    public MultiItem(int viewType, int holderView, String holderPackage) {
+        ViewType = viewType;
+        HolderView = holderView;
+        HolderPackage = holderPackage;
+    }
+
     public int getHolderView() {
         return HolderView;
     }
