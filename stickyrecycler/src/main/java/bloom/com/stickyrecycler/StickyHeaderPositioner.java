@@ -7,6 +7,7 @@ import android.support.annotation.Px;
 import android.support.annotation.VisibleForTesting;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.MarginLayoutParams;
@@ -183,21 +184,26 @@ public class StickyHeaderPositioner {
      * preceding header position (if available).
      */
     private int getHeaderPositionToShow(int firstVisiblePosition, @Nullable View headerForPosition) {
-        int headerPositionToShow = INVALID_POSITION;
-        if (headerIsOffset(headerForPosition)) {
-            int offsetHeaderIndex = headerPositions.indexOf(firstVisiblePosition);
-            if (offsetHeaderIndex > 0) {
-                return headerPositions.get(offsetHeaderIndex - 1);
+        try {
+            int headerPositionToShow = INVALID_POSITION;
+            if (headerIsOffset(headerForPosition)) {
+                int offsetHeaderIndex = headerPositions.indexOf(firstVisiblePosition);
+                if (offsetHeaderIndex > 0) {
+                    return headerPositions.get(offsetHeaderIndex - 1);
+                }
             }
-        }
-        for (Integer headerPosition : headerPositions) {
-            if (headerPosition <= firstVisiblePosition) {
-                headerPositionToShow = headerPosition;
-            } else {
-                break;
+            for (Integer headerPosition : headerPositions) {
+                if (headerPosition <= firstVisiblePosition) {
+                    headerPositionToShow = headerPosition;
+                } else {
+                    break;
+                }
             }
+            return headerPositionToShow;
+        }catch (Exception e){
+            Log.e("MultiRecyclerAdapter : ","HeaderNotExist : "+e);
+            return 0;
         }
-        return headerPositionToShow;
     }
 
     private boolean headerIsOffset(View headerForPosition) {
