@@ -23,6 +23,7 @@ public class StickyLinearLayoutManager extends LinearLayoutManager {
     private int headerElevation = StickyHeaderPositioner.NO_ELEVATION;
     @Nullable
     private StickyHeaderListener listener;
+    private int headerType;
 
     public StickyLinearLayoutManager(Context context, List<MultiAdapterItem> headerHandler) {
         this(context, VERTICAL, false, headerHandler);
@@ -89,6 +90,8 @@ public class StickyLinearLayoutManager extends LinearLayoutManager {
     @Override
     public int scrollVerticallyBy(int dy, RecyclerView.Recycler recycler, RecyclerView.State state) {
         int scroll = super.scrollVerticallyBy(dy, recycler, state);
+        if(this.headerType!=VERTICAL)
+            return scroll;
         if (Math.abs(scroll) > 0) {
             if (positioner != null) {
                 positioner.updateHeaderState(
@@ -101,10 +104,12 @@ public class StickyLinearLayoutManager extends LinearLayoutManager {
     @Override
     public int scrollHorizontallyBy(int dx, RecyclerView.Recycler recycler, RecyclerView.State state) {
         int scroll = super.scrollHorizontallyBy(dx, recycler, state);
+        if(this.headerType!=HORIZONTAL)
+            return scroll;
         if (Math.abs(scroll) > 0) {
             if (positioner != null) {
-//                positioner.updateHeaderState(
-//                        findFirstVisibleItemPosition(), getVisibleHeaders(), viewRetriever, findFirstCompletelyVisibleItemPosition() == 0);
+                positioner.updateHeaderState(
+                        findFirstVisibleItemPosition(), getVisibleHeaders(), viewRetriever, findFirstCompletelyVisibleItemPosition() == 0);
             }
         }
         return scroll;
@@ -169,5 +174,9 @@ public class StickyLinearLayoutManager extends LinearLayoutManager {
         if (positioner != null) {
             positioner.setHeaderPositions(headerPositions);
         }
+    }
+
+    public void setHeaderType(int headerType) {
+        this.headerType = headerType;
     }
 }

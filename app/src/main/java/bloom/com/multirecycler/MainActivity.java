@@ -86,6 +86,8 @@ public class MainActivity extends AppCompatActivity implements SampleListItem.It
 
 
         StickyLinearLayoutManager layoutManager = new StickyListLinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, homeItems);
+        layoutManager.setHeaderType(LinearLayoutManager.HORIZONTAL);
+
         //    layoutManager.elevateHeaders(true); // Default elevation of 5dp
         // You can also specify a specific dp for elevation
         layoutManager.elevateHeaders(-1);
