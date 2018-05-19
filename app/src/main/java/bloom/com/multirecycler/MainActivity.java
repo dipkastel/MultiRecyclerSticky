@@ -1,10 +1,17 @@
 package bloom.com.multirecycler;
 
+import android.animation.ArgbEvaluator;
+import android.animation.ValueAnimator;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.TransitionDrawable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -85,8 +92,8 @@ public class MainActivity extends AppCompatActivity implements SampleListItem.It
 
 
 
-        StickyLinearLayoutManager layoutManager = new StickyListLinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, homeItems);
-        layoutManager.setHeaderType(LinearLayoutManager.HORIZONTAL);
+        StickyLinearLayoutManager layoutManager = new StickyListLinearLayoutManager(MainActivity.this, LinearLayoutManager.VERTICAL, homeItems);
+        layoutManager.setHeaderType(LinearLayoutManager.VERTICAL);
 
         //    layoutManager.elevateHeaders(true); // Default elevation of 5dp
         // You can also specify a specific dp for elevation
@@ -94,11 +101,38 @@ public class MainActivity extends AppCompatActivity implements SampleListItem.It
         recyclerView.setLayoutManager(layoutManager);
         layoutManager.setStickyHeaderListener(new StickyHeaderListener() {
             @Override
-            public void headerAttached(View headerView, int adapterPosition) {
+            public void headerAttached(final View headerView, int adapterPosition) {
+                Log.e("HeaderTest : ","headerAttached  "+adapterPosition);
+
+//                int color = Color.TRANSPARENT;
+//                Drawable background = headerView.getBackground();
+//                if (background instanceof ColorDrawable)
+//                    color = ((ColorDrawable) background).getColor();
+//                int colorFrom = Color.parseColor("#FF0000");
+//                int colorTo = Color.BLUE;
+//                ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
+//                colorAnimation.setDuration(1200); // milliseconds
+//                colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+//
+//                    @Override
+//                    public void onAnimationUpdate(ValueAnimator animator) {
+//                        headerView.setBackgroundColor((int) animator.getAnimatedValue());
+//                    }
+//
+//                });
+//                colorAnimation.start();
+
+
+
+                headerView.setBackgroundColor(Color.BLUE);
+//                TransitionDrawable transition = (TransitionDrawable) headerView.getBackground();
+//                transition.startTransition(200);
             }
 
             @Override
             public void headerDetached(View headerView, int adapterPosition) {
+                Log.e("HeaderTest : ","headerDetached  "+adapterPosition);
+                headerView.setBackgroundColor(Color.TRANSPARENT);
             }
         });
 

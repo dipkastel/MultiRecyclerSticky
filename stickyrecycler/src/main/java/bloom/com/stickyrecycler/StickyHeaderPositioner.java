@@ -57,6 +57,8 @@ public class StickyHeaderPositioner {
 
     void updateHeaderState(int firstVisiblePosition, Map<Integer, View> visibleHeaders,
                            ViewRetriever viewRetriever, boolean atTop) {
+
+        Log.d("stickyHeader","update header");
         int headerPositionToShow = atTop ? INVALID_POSITION : getHeaderPositionToShow(
                 firstVisiblePosition, visibleHeaders.get(firstVisiblePosition));
 
@@ -69,6 +71,7 @@ public class StickyHeaderPositioner {
                 lastBoundPosition = INVALID_POSITION;
             } else {
                 lastBoundPosition = headerPositionToShow;
+                Log.d("stickyHeader","lastPosition set to :"+lastBoundPosition);
                 RecyclerView.ViewHolder viewHolder =
                         viewRetriever.getViewHolderForPosition(headerPositionToShow);
                 attachHeader(viewHolder, headerPositionToShow);

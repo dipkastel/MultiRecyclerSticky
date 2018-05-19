@@ -23,6 +23,7 @@ class StickyGridLayoutManager extends GridLayoutManager {
     private int headerElevation = StickyHeaderPositioner.NO_ELEVATION;
     @Nullable
     private StickyHeaderListener listener;
+    private int headerType;
 
 
     public StickyGridLayoutManager(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
@@ -91,6 +92,8 @@ class StickyGridLayoutManager extends GridLayoutManager {
     @Override
     public int scrollVerticallyBy(int dy, RecyclerView.Recycler recycler, RecyclerView.State state) {
         int scroll = super.scrollVerticallyBy(dy, recycler, state);
+        if(this.headerType!=VERTICAL)
+            return scroll;
         if (Math.abs(scroll) > 0) {
             if (positioner != null) {
                 positioner.updateHeaderState(
@@ -103,6 +106,8 @@ class StickyGridLayoutManager extends GridLayoutManager {
     @Override
     public int scrollHorizontallyBy(int dx, RecyclerView.Recycler recycler, RecyclerView.State state) {
         int scroll = super.scrollHorizontallyBy(dx, recycler, state);
+        if(this.headerType!=HORIZONTAL)
+            return scroll;
         if (Math.abs(scroll) > 0) {
             if (positioner != null) {
                 positioner.updateHeaderState(
@@ -173,4 +178,7 @@ class StickyGridLayoutManager extends GridLayoutManager {
         }
     }
 
+    public void setHeaderType(int headerType) {
+        this.headerType = headerType;
+    }
 }
